@@ -1,0 +1,26 @@
+  
+section.tickets-list
+  h2.visually-hidden Самые новые предложения
+  .tickets-list__wrapper
+    .tickets-list__header
+      p.tickets-list__title Самое свежее
+      a.tickets-list__link(href='#') Еще 25
+    ul
+      each ticket, index in tickets
+        li.tickets-list__item
+          .ticket-card.ticket-card--color0#{index}
+            .ticket-card__img
+              img(src=`/img/${offer.picture}.jpg` srcset=`/img/${offer.picture}@2x.jpg 2x` alt='Изображение товара')
+            .ticket-card__info
+              span.ticket-card__label #{ticket.action}
+              .ticket-card__categories
+                a(href='#') #{ticket.category}
+              .ticket-card__header
+                h3.ticket-card__title
+                  a(href='#') #{ticket.title}
+                p.ticket-card__price
+                  span.js-sum #{ticket.price.value}
+                  |  #{ticket.price.currency}
+              .ticket-card__desc
+                p #{ticket.desc}
+    
