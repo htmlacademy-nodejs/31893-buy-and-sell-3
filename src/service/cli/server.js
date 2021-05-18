@@ -4,9 +4,12 @@ const fs = require(`fs`).promises;
 const express = require(`express`);
 const {Router} = require(`express`);
 
+const routes = require(`../api`);
+
 const {
   FILE_NAME,
-  HttpCode
+  HttpCode,
+  API_PREFIX
 } = require(`../../constants`);
 const DEFAULT_PORT = 3000;
 
@@ -24,6 +27,8 @@ app.use(`/offers`, router.get(`/`, async (req, res) => {
     res.status(HttpCode.INTERNAL_SERVER_ERROR).send(err);
   }
 }));
+
+app.use(API_PREFIX, routes);
 
 app.use((req, res) => res
   .status(HttpCode.NOT_FOUND)
