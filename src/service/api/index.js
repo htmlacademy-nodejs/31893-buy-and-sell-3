@@ -1,9 +1,9 @@
 'use strict';
 
 const {Router} = require(`express`);
-const category = require(`../api/category`);
-const offer = require(`../api/offer`);
-const search = require(`../api/search`);
+const category = require(`./category`);
+const offer = require(`./offer`);
+const search = require(`./search`);
 
 const getMockData = require(`../lib/get-mock-data`);
 

@@ -15,7 +15,8 @@ class CommentService {
     const newComment = {id: nanoid(MAX_ID_LENGTH), text: comment.text};
     offer.comments.push(newComment);
 
-    this._offers = this._offers.filter((item) => item.id !== offer.id).push(offer);
+    this._offers = this._offers.filter((item) => item.id !== offer.id);
+    this._offers.push(offer);
 
     return newComment;
   }
@@ -30,7 +31,8 @@ class CommentService {
 
     offer.comments = offer.comments.filter((item) => item.id !== commmentId);
 
-    this._offers = this._offers.filter((item) => item.id !== offerId).push(offer);
+    this._offers = this._offers.filter((item) => item.id !== offerId);
+    this._offers.push(offer);
     return comment;
   }
 
