@@ -22,11 +22,11 @@ offersRouter.post(`/add`,
         type: body.action,
         description: body.comment,
         title: body[`ticket-name`],
-        categories: ensureArray(body.category),
+        category: ensureArray(body.category),
       };
 
       try {
-        await api.post(`/offers`, offerData);
+        await api.createOffer(offerData);
         res.redirect(`/my`);
       } catch (e) {
         res.redirect(`back`);

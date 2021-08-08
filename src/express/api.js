@@ -11,19 +11,23 @@ class API {
   }
 
   async _load(url, options) {
-    const response = await this._http.request({url, ...options});
-    return response.data;
+    try {
+      const response = await this._http.request({url, ...options});
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
   }
 
-  getOffers() {
+  async getOffers() {
     return this._load(`/offers`);
   }
 
-  getOffer(id) {
+  async getOffer(id) {
     return this._load(`/offers/${id}`);
   }
 
-  search(query) {
+  async search(query) {
     return this._load(`/search`, {params: {query}});
   }
 
